@@ -1,0 +1,11 @@
+<div class="edit-dialog-container">
+  <h2 class="edit-dialog-title">Edit {{ fieldName }}</h2>
+
+  <form [formGroup]="editForm" (ngSubmit)="saveEdit()" class="edit-form">
+    <label for="editedValue" class="edit-label">{{ fieldName }}:</label>
+    <input type="text" id="editedValue" formControlName="editedValue" class="edit-input" required>
+
+    <button type="submit" class="edit-button">Save</button>
+    <button type="button" (click)="cancelEdit()" class="edit-button cancel-button">Cancel</button>
+  </form>
+</div>

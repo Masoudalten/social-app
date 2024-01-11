@@ -1,0 +1,53 @@
+.edit-dialog-container {
+    background-color: #f6f7f8; /* Light gray background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .edit-dialog-title {
+    color: #1877f2; /* Facebook blue */
+    margin-bottom: 15px;
+  }
+  
+  .edit-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .edit-label {
+    margin-bottom: 8px;
+    color: #333; /* Dark gray */
+  }
+  
+  .edit-input {
+    padding: 10px;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px;
+    margin-bottom: 15px;
+  }
+  
+  .edit-button {
+    background-color: #1877f2; /* Facebook blue */
+    color: #fff; /* White text */
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .edit-button:hover {
+    background-color: #1560bd; /* Slightly darker blue on hover */
+  }
+  
+  .cancel-button {
+    background-color: #e4e6eb; /* Light gray for cancel button */
+    color: #333; /* Dark gray text */
+    margin-top: 8px;
+  }
+  
+  .cancel-button:hover {
+    background-color: #d4d8de; /* Slightly darker gray on hover */
+  }
+  

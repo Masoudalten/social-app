@@ -1,0 +1,7 @@
+<form [formGroup]="form">
+  <h1>Login</h1> 
+  <input type="text" formControlName="username" placeholder="Username" required>
+  <!--     <input type="password" placeholder="Password" required> -->
+  <input type="submit" value="Log In" (click)="login()" [disabled]="!form.valid">
+  <div class="error" *ngIf="form.invalid">Incorrect username</div>
+</form>

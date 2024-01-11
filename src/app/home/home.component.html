@@ -1,0 +1,102 @@
+<style>
+    /* Sidebar */
+    .sidebar {
+        width: 200px;
+        height: 100%;
+        position: fixed;
+        top: 68px;
+        right: 0;
+        background-color: #f1f1f1;
+        overflow-y: auto;
+        margin-right: 8px;
+    }
+
+    .sidebar a {
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+        color: black;
+    }
+
+    .sidebar a:hover {
+        background-color: #ddd;
+    }
+
+    /* Main content */
+    .main {
+        margin-right: 200px;
+        padding: 20px;
+    }
+
+    .main h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .main .post {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    .main .post .author {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .main .post .content {
+        margin-bottom: 10px;
+    }
+
+    .main .post .actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .main .post .actions button {
+        padding: 5px 10px;
+        border-radius: 20px;
+        border: none;
+        background-color: #4CAF50;
+        color: white;
+    }
+</style>
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Friends</h2>
+        <div *ngFor="let user of users">
+            <a href="#">{{user.name}} {{user.lastname}}</a>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="main">
+        <h1>News Feed</h1>
+
+        <div class="post">
+            <div class="author">John Doe</div>
+            <div class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc vel bibendum
+                bibendum, nisi elit bibendum ipsum, nec bibendum sapien lorem sed sapien. Sed vel sapien vel sapien.
+            </div>
+            <div class="actions">
+                <button>Like</button>
+                <button>Comment</button>
+                <button>Share</button>
+            </div>
+        </div>
+
+        <div class="post">
+            <div class="author">Jane Smith</div>
+            <div class="content">Sed euismod, nunc vel bibendum bibendum, nisi elit bibendum ipsum, nec bibendum sapien
+                lorem sed sapien. Sed vel sapien vel sapien.</div>
+            <div class="actions">
+                <button>Like</button>
+                <button>Comment</button>
+                <button>Share</button>
+            </div>
+        </div>
+    </div>
+</body>

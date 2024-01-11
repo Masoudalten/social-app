@@ -1,0 +1,29 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #1877f2;
+    color: white;
+}
+
+.header img {
+    height: 40px;
+    width: 40px;
+    border-radius: 99px;
+}
+
+.header h2 {
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    margin-left: 10px;
+    margin: 0;
+}
+
+.header h2 a{
+    text-decoration: none;
+    color: white;
+}
