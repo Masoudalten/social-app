@@ -1,0 +1,20 @@
+
+<div *ngIf="user" class="profile-container">
+    <h1>{{user.name}} {{user.lastname}}</h1>
+    <img src="{{user.image}}" type="button" class="profile-picture" (click)="edit.emit('image')">
+  
+    <form [formGroup]="profileForm" (ngSubmit)="saveChanges()">
+      <div class="form-group" *ngFor="let field of ['name', 'lastname', 'email', 'username']">
+        <span id="{{field}}">{{field | titlecase}}:</span>
+        <div class="input-group">
+          <h2 id="{{field}}">{{ user[field] }}</h2>
+          <img *ngIf="currentUser" src="assets/pencil.svg" alt="pencil" type="button" class="edit-button" (click)="edit.emit(field)">
+        </div>
+      </div>
+      <div class="btn">
+        <button *ngIf="currentUser" type="submit" [disabled]="profileForm.invalid" class="save-button">Save Changes</button>
+        <button *ngIf="currentUser" class="logout-button" (click)="logout.emit()">Log Out</button>  
+      </div>
+    </form>
+  </div>
+  

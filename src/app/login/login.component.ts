@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
+  isUserLoggedIn: boolean = false;
+
   form: FormGroup = this.fb.group({
     username: ['', Validators.required]
   })
@@ -20,6 +22,7 @@ export class LoginComponent {
     if (!user) {
       alert('invalid username')
     } else {
+      this.userService.login(user.username);
       this.router.navigate(['/profile', user.id])
     }
   }

@@ -14,6 +14,7 @@ import { HeaderComponent } from './header/header.component';
 import { UserAuthService } from './services/UserService.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
+import { ProfileViewComponent } from './profile-view/profile-view.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -29,7 +30,8 @@ const routes: Routes = [
     LoginComponent,
     ProfileComponent,
     HeaderComponent,
-    EditDialogComponent
+    EditDialogComponent,
+    ProfileViewComponent
   ],
   imports: [
     BrowserModule,

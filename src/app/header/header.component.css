@@ -10,6 +10,7 @@
 .header img {
     height: 40px;
     width: 40px;
+    object-fit: cover;
     border-radius: 99px;
 }
 
@@ -26,4 +27,15 @@
 .header h2 a{
     text-decoration: none;
     color: white;
+}
+
+a {
+    color: white;
+    text-decoration: none !important;
+    display: flex;
+    align-items: center;
+}
+
+span{
+    padding: 5px;
 }
