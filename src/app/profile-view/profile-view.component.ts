@@ -1,4 +1,3 @@
-// profile-view.component.ts - presentation component
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 

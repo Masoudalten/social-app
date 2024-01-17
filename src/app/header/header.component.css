@@ -1,10 +1,15 @@
+.header-bg {
+    background-color: #1877f2;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #1877f2;
     color: white;
+    position: sticky;
+    top: 0;
 }
 
 .header img {
@@ -24,7 +29,7 @@
     margin: 0;
 }
 
-.header h2 a{
+.header h2 a {
     text-decoration: none;
     color: white;
 }
@@ -36,6 +41,6 @@ a {
     align-items: center;
 }
 
-span{
+span {
     padding: 5px;
 }

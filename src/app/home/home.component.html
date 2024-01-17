@@ -1,35 +1,4 @@
-<div class="home-page">
-    <div class="sidebar">
-        <h2>Friends</h2>
-        <div *ngFor="let user of users">
-            <a [routerLink]="'/profile/'+ user.id">{{user.name}} {{user.lastname}}</a>
-        </div>
-    </div>
-
-    <div class="main">
-        <h1>News Feed</h1>
-
-        <div class="post">
-            <div class="author">John Doe</div>
-            <div class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc vel bibendum
-                bibendum, nisi elit bibendum ipsum, nec bibendum sapien lorem sed sapien. Sed vel sapien vel sapien.
-            </div>
-            <div class="actions">
-                <button>Like</button>
-                <button>Comment</button>
-                <button>Share</button>
-            </div>
-        </div>
-
-        <div class="post">
-            <div class="author">Jane Smith</div>
-            <div class="content">Sed euismod, nunc vel bibendum bibendum, nisi elit bibendum ipsum, nec bibendum sapien
-                lorem sed sapien. Sed vel sapien vel sapien.</div>
-            <div class="actions">
-                <button>Like</button>
-                <button>Comment</button>
-                <button>Share</button>
-            </div>
-        </div>
-    </div>
+<div class="home-page container">
+    <app-chat></app-chat>
+    <app-post></app-post>
 </div>

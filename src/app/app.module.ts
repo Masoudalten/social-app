@@ -15,6 +15,13 @@ import { UserAuthService } from './services/UserService.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 import { ProfileViewComponent } from './profile-view/profile-view.component';
+import { PostComponent } from './post/post.component';
+import { PostListComponent } from './post/post-list/post-list.component';
+import { AddPostComponent } from './post/add-post/add-post.component';
+import { PostService } from './services/PostService.service';
+import { CommonModule } from '@angular/common';
+import { ChatComponent } from './chat/chat.component';
+import { SearchComponent } from './chat/search/search.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -31,7 +38,12 @@ const routes: Routes = [
     ProfileComponent,
     HeaderComponent,
     EditDialogComponent,
-    ProfileViewComponent
+    ProfileViewComponent,
+    PostComponent,
+    PostListComponent,
+    AddPostComponent,
+    ChatComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,9 +53,12 @@ const routes: Routes = [
     MatInputModule,
     MatButtonModule,
     MatDialogModule,
+    FormsModule,
+    CommonModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [UserAuthService],
+  providers: [UserAuthService, 
+    PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

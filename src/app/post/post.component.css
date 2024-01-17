@@ -1,0 +1,19 @@
+.main {
+    height: calc(100vh - 60px);
+    position: relative;
+}
+
+.author {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.content {
+    margin-bottom: 10px;
+}
+
+.post-list {
+    max-height: 75vh;
+    overflow-y: auto;
+    padding: 10px;
+}

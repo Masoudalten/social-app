@@ -7,12 +7,5 @@ import { UserAuthService } from '../services/UserService.service';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  users: any[] = [];
-
-  constructor(private userService: UserAuthService) { }
-
-  ngOnInit() {
-    this.users = this.userService.users
-  }
 
 }
