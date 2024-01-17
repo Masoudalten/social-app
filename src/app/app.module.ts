@@ -13,8 +13,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { UserAuthService } from './services/UserService.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
-import { ProfileViewComponent } from './profile-view/profile-view.component';
+import { EditDialogComponent } from './profile/edit-dialog/edit-dialog.component';
+import { ProfileViewComponent } from './profile/profile-view/profile-view.component';
 import { PostComponent } from './post/post.component';
 import { PostListComponent } from './post/post-list/post-list.component';
 import { AddPostComponent } from './post/add-post/add-post.component';
@@ -22,6 +22,9 @@ import { PostService } from './services/PostService.service';
 import { CommonModule } from '@angular/common';
 import { ChatComponent } from './chat/chat.component';
 import { SearchComponent } from './chat/search/search.component';
+import { ChatService } from './services/ChatService.service';
+import { ChatBoxComponent } from './chat/chat-box/chat-box.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -44,6 +47,7 @@ const routes: Routes = [
     AddPostComponent,
     ChatComponent,
     SearchComponent,
+    ChatBoxComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,8 +61,9 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [UserAuthService, 
-    PostService],
+  providers: [UserAuthService,
+    PostService,
+    ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

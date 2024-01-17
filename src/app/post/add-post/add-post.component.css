@@ -1,15 +1,23 @@
 .new-post-form form {
     display: flex;
-    flex-wrap: wrap;
-    /* position: absolute; */
-    bottom: 0;
-    margin-right: 210px;
+    flex-direction: row;
+    align-items: center;
+    z-index: 1 !important;
 }
-
+.fixed-bottom {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+  }
+label{
+    padding-right: 10px;
+}
 .new-post-form input,
 .new-post-form textarea {
-    flex: 1; 
-    width: calc(50% - 8px); 
+    margin-right: 10px;
+    width: 800px;
     padding: 10px;
     margin-bottom: 16px;
     border: 1px solid #ddd;
@@ -20,7 +28,6 @@
 
 .new-post-form button {
     flex: 0 0 120px;
-    margin-top: 16px; 
     background-color: #1877f2;
     color: #fff;
     padding: 12px;
@@ -29,18 +36,7 @@
     cursor: pointer;
     font-size: 16px;
 }
+
 .new-post-form button:hover {
     background-color: #145686;
-}
-
-.new-post-form form {
-    display: flex;
-    flex-direction: row;
-    align-items: center; 
-}
-
-.new-post-form input,
-.new-post-form textarea {
-    margin-right: 10px;
-    width:800px
 }

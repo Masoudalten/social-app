@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UserAuthService } from '../services/UserService.service';
 
 @Component({
@@ -9,6 +9,8 @@ import { UserAuthService } from '../services/UserService.service';
 export class ChatComponent implements OnInit {
   users: any[] = [];
   searchText: string = '';
+  showChat = false;
+
 
   constructor(private userService: UserAuthService) { }
 
@@ -37,4 +39,13 @@ export class ChatComponent implements OnInit {
       return false
     }
   }
+
+  openChat() {
+    this.showChat = true;
+  }
+
+  toggleChat() {
+    this.showChat = !this.showChat;
+  }
+
 }

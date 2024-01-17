@@ -1,6 +1,6 @@
-<div class="new-post-form fixed-bottom container m-r-50">
+<div class="new-post-form fixed-bottom container">
     <form (submit)="submitNewPost()">
-        <label for="content">Content:</label>
+        <!-- <label for="content">Content:</label> -->
         <textarea id="content" name="content" [(ngModel)]="newPost.content"
             placeholder="Write a new post here"></textarea>
         <button type="submit">Post</button>
