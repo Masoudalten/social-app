@@ -7,14 +7,8 @@ import { UserAuthService } from '../services/UserService.service';
 
 @Component({
   selector: 'app-profile',
-  template: `
-    <app-profile-view
-      [user]="user"
-      [currentUser]="currentUser"
-      (edit)="openEditDialog($event)"
-      (logout)="OnLogOut()"
-    ></app-profile-view>
-  `,
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
   user: any;

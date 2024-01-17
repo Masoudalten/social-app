@@ -18,7 +18,23 @@ export class ChatComponent implements OnInit {
 
   onSearchTextEntered(searchValue: string) {
     this.searchText = searchValue;
-    //console.log(this.searchText)
   }
 
+  get isUserLoggedIn(): boolean {
+    return this.userService.getIsUserLoggedIn();
+  }
+
+  userToDisplay(user: any): boolean {
+    if (this.isUserLoggedIn) {
+      const loggedInUserId = this.userService.session.id;
+      return this.userService.getIsUserLoggedIn() && user.id !== loggedInUserId &&
+        (this.searchText === '' ||
+          user.name.toLowerCase().includes(this.searchText) ||
+          user.lastname.toLowerCase().includes(this.searchText));
+
+    }
+    else {
+      return false
+    }
+  }
 }
