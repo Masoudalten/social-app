@@ -1,12 +1,12 @@
 .edit-dialog-container {
-    background-color: #f6f7f8; /* Light gray background */
+    background-color: #f6f7f8;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
   .edit-dialog-title {
-    color: #1877f2; /* Facebook blue */
+    color: #1877f2;
     margin-bottom: 15px;
   }
   
@@ -17,19 +17,19 @@
   
   .edit-label {
     margin-bottom: 8px;
-    color: #333; /* Dark gray */
+    color: #333;
   }
   
   .edit-input {
     padding: 10px;
-    border: 1px solid #ccc; /* Light gray border */
+    border: 1px solid #ccc;
     border-radius: 4px;
     margin-bottom: 15px;
   }
   
   .edit-button {
-    background-color: #1877f2; /* Facebook blue */
-    color: #fff; /* White text */
+    background-color: #1877f2;
+    color: #fff;
     padding: 10px;
     border: none;
     border-radius: 4px;
@@ -38,16 +38,16 @@
   }
   
   .edit-button:hover {
-    background-color: #1560bd; /* Slightly darker blue on hover */
+    background-color: #1560bd;
   }
   
   .cancel-button {
-    background-color: #e4e6eb; /* Light gray for cancel button */
-    color: #333; /* Dark gray text */
+    background-color: #e4e6eb;
+    color: #333; 
     margin-top: 8px;
   }
   
   .cancel-button:hover {
-    background-color: #d4d8de; /* Slightly darker gray on hover */
+    background-color: #d4d8de;
   }
   

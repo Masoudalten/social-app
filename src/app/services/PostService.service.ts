@@ -18,42 +18,7 @@ export class PostService {
             lauthor: 'Smith',
             content: 'Share a video post of your team working on a project or preparing for an event. You can also add a caption that provides context and insight into your brands culture. For example, “We asre working hard to bring you the best experience at our upcoming event! Stay tuned for more updates."'
         },
-        {
-            nauthor: 'Max',
-            lauthor: 'Smith',
-            content: 'Share a video post of your team working on a project or preparing for an event. You can also add a caption that provides context and insight into your brands culture. For example, “We asre working hard to bring you the best experience at our upcoming event! Stay tuned for more updates."'
-        },
-        {
-            nauthor: 'Max',
-            lauthor: 'Smith',
-            content: 'Share a video post of your team working on a project or preparing for an event. You can also add a caption that provides context and insight into your brands culture. For example, “We asre working hard to bring you the best experience at our upcoming event! Stay tuned for more updates."'
-        },
-        {
-            nauthor: 'Max',
-            lauthor: 'Smith',
-            content: 'Share a video post of your team working on a project or preparing for an event. You can also add a caption that provides context and insight into your brands culture. For example, “We asre working hard to bring you the best experience at our upcoming event! Stay tuned for more updates."'
-        },
-        {
-            nauthor: 'Max',
-            lauthor: 'Smith',
-            content: 'Share a video post of your team working on a project or preparing for an event. You can also add a caption that provides context and insight into your brands culture. For example, “We asre working hard to bring you the best experience at our upcoming event! Stay tuned for more updates."'
-        },
-        {
-            nauthor: 'Max',
-            lauthor: 'Smith',
-            content: 'Share a video post of your team working on a project or preparing for an event. You can also add a caption that provides context and insight into your brands culture. For example, “We asre working hard to bring you the best experience at our upcoming event! Stay tuned for more updates."'
-        },
-        {
-            nauthor: 'Max',
-            lauthor: 'Smith',
-            content: 'Share a video post of your team working on a project or preparing for an event. You can also add a caption that provides context and insight into your brands culture. For example, “We asre working hard to bring you the best experience at our upcoming event! Stay tuned for more updates."'
-        },
-        {
-            nauthor: 'Max',
-            lauthor: 'Smith',
-            content: 'Share a video post of your team working on a project or preparing for an event. You can also add a caption that provides context and insight into your brands culture. For example, “We asre working hard to bring you the best experience at our upcoming event! Stay tuned for more updates."'
-        }
-        
+
     ];
 
     getPosts(): Observable<any[]> {

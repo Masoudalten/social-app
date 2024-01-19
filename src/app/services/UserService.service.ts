@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core"
 import { Router } from "@angular/router";
 import { Observable, of } from "rxjs";
+import { ChatService } from "./ChatService.service";
 
 @Injectable({
     providedIn: 'root'
@@ -89,7 +90,7 @@ export class UserAuthService {
             image: 'https://www.shutterstock.com/image-photo/profile-picture-smiling-successful-young-260nw-2040223583.jpg'
         }
     ];
-    
+
 
 
     private isUserLoggedIn: boolean = false;
@@ -98,7 +99,7 @@ export class UserAuthService {
     user: any;
 
 
-    constructor(private router: Router) {
+    constructor(private router: Router, private chatService: ChatService) {
         const storedSession = localStorage.getItem('session');
         this.session = storedSession ? JSON.parse(storedSession) : null;
         this.isUserLoggedIn = this.session !== null;
@@ -119,6 +120,7 @@ export class UserAuthService {
         localStorage.removeItem('session');
         this.router.navigateByUrl('/');
         this.isUserLoggedIn = false;
+        this.chatService.closeAllChats();
     }
 
     public getUser(id: number): Observable<any> {
@@ -145,7 +147,7 @@ export class UserAuthService {
 
 
     currentUser(): boolean {
-        if (this.isUserLoggedIn &&  this.user.id === this.session.id) {
+        if (this.isUserLoggedIn && this.user.id === this.session.id) {
             console.log('User is the current user');
             return true;
         }

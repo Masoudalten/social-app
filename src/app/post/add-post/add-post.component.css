@@ -11,9 +11,7 @@
     left: 0;
     z-index: 1;
   }
-label{
-    padding-right: 10px;
-}
+  
 .new-post-form input,
 .new-post-form textarea {
     margin-right: 10px;

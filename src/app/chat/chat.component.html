@@ -1,10 +1,9 @@
 <div class="chat">
     <h2>Friends</h2>
-    <app-chat-box [showChat]="showChat" (toggleChat)="toggleChat()"></app-chat-box>
     <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
     <div *ngFor="let user of users">
         <div *ngIf="userToDisplay(user)">
-            <a (click)="openChat()"><img src="{{user.image}}" alt="profile-pic"
+            <a (click)="openChat(user)"><img src="{{user.image}}" alt="profile-pic"
                     style="height: 30px; width: 30px;">{{user.name}} {{user.lastname}}</a>
         </div>
     </div>

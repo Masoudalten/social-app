@@ -1,2 +1,8 @@
 <app-header></app-header>
-<router-outlet></router-outlet>
+<div class="container">
+    <router-outlet></router-outlet>
+    <div *ngFor="let chatId of chatService.getOpenChats()">
+        <app-chat-box [chatId]="chatId"></app-chat-box>
+    </div>
+
+</div>

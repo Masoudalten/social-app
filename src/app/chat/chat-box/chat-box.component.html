@@ -1,13 +1,20 @@
-<div class="chat-popup" *ngIf="showChat" >
-    <div class="chat-header">
-        <span class="chat-title">Chat</span>
-        <button class="chat-close-btn" (click)="onCloseClick()">×</button>
-    </div>
-    <div class="chat-body">
-        <div *ngFor="let message of messages">{{ message }}</div>
-    </div>
-    <div class="chat-footer">
-        <input type="text" [(ngModel)]="newMessage" placeholder="Type a message..." />
-        <button (click)="sendMessage()">Send</button>
+<div *ngFor="let chatId of getOpenChats(); let i = index">
+    <div class="chat-popup" *ngIf="showChat && chatId === currentChatId" [style.right.px]="120 + 320 * chatPosition">
+
+        <div class="chat-header">
+            <a [routerLink]="'/profile/'+ chatId">
+                <span class="chat-title"><img src="{{selectedUser.image}}" alt=""> {{selectedUser.name}}
+                    {{selectedUser.lastname}}</span></a>
+            <button class="chat-close-btn" (click)="onCloseClick()">×</button>
+        </div>
+        <div class="chat-body">
+            <div *ngFor="let message of messages">{{message}}</div>
+        </div>
+        <div class="chat-footer">
+            <form (submit)="sendMessage()">
+                <input name="chat-msg" [(ngModel)]="newMessage" placeholder="Type a message..." />
+                <button type="submit">Send</button>
+            </form>
+        </div>
     </div>
 </div>
