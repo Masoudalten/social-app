@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PostService } from '../services/PostService.service';
 import { UserAuthService } from '../services/UserService.service';
+import { Post } from '../interface/Post';
 
 @Component({
   selector: 'app-post',
@@ -9,17 +10,21 @@ import { UserAuthService } from '../services/UserService.service';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-  @Input() posts: any[] = [];
+  @Input() posts: Post[] = [];
 
   constructor(private postService: PostService, private userService: UserAuthService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.postService.getPosts().subscribe(posts => {
       this.posts = posts;
     });
   }
 
-  addNewPost(newPost: any) {
-    this.postService.addPost(newPost);
+  addNewPost(newPost: Post) {
+    this.postService.addPost(newPost).subscribe(() => {
+      this.postService.getPosts().subscribe(posts => {
+        this.posts = posts;
+      })
+    });
   }
 }

@@ -18,9 +18,7 @@ export class ChatBoxComponent {
   chatPosition: number = 0;
 
   constructor(private chatService: ChatService) { }
-
-
-
+  
   ngOnInit() {
     this.selectedUser = this.chatService.selectedUser;
 

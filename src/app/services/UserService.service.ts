@@ -39,7 +39,7 @@ export class UserAuthService {
             lastname: 'Conti',
             email: 'giulia.conti@mail.com',
             username: 'g.conti',
-            image: 'https://play-lh.googleusercontent.com/LqgSQHWNv9Dc7DS_J3BgYfZviCti_RBgQNDUHqFWqMLkdhbBxXOQy7cacNXCz5mSMqQ'
+            image: 'https://play-lh.googleusercontent.com/LeX880ebGwSM8Ai_zukSE83vLsyUEUePcPVsMJr2p8H3TUYwNg-2J_dVMdaVhfv1cHg'
         },
         {
             id: 5,

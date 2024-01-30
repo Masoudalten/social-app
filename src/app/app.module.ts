@@ -24,6 +24,7 @@ import { ChatComponent } from './chat/chat.component';
 import { SearchComponent } from './chat/search/search.component';
 import { ChatService } from './services/ChatService.service';
 import { ChatBoxComponent } from './chat/chat-box/chat-box.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 const routes: Routes = [
@@ -59,6 +60,7 @@ const routes: Routes = [
     MatDialogModule,
     FormsModule,
     CommonModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
   providers: [UserAuthService,

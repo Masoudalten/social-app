@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { UserAuthService } from '../../services/UserService.service';
+import { PostService } from '../../services/PostService.service';
 
 @Component({
   selector: 'app-add-post',
@@ -10,7 +11,7 @@ export class AddPostComponent {
   @Output() newPostEvent = new EventEmitter<any>();
   newPost: any = { content: '' };
 
-  constructor(private userService: UserAuthService) {}
+  constructor(private userService: UserAuthService) { }
 
 
   submitNewPost() {

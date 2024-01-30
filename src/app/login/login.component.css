@@ -6,7 +6,6 @@ form {
     height: 100vh;
   }
 
-  /* Style the input fields */
   input[type="text"], input[type="password"] {
     padding: 10px;
     margin: 10px;
@@ -15,7 +14,6 @@ form {
     width: 300px;
   }
 
-  /* Style the submit button */
   input[type="submit"] {
     padding: 10px;
     margin: 10px;
@@ -33,7 +31,6 @@ form {
     }
   }
 
-  /* Style the error message */
   .error {
     color: red;
     margin-top: 10px;
