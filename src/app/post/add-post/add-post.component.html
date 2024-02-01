@@ -1,7 +1,7 @@
 <div class="new-post-form fixed-bottom container">
-    <form (submit)="submitNewPost()">
+    <form (submit)="submitNewPost()" #postForm="ngForm">
         <textarea id="content" name="content" [(ngModel)]="newPost.content"
             placeholder="Write a new post here"></textarea>
-        <button type="submit">Post</button>
+        <button type="submit">{{ isEditMode? 'Edit' : 'Post' }}</button>
     </form>
 </div>

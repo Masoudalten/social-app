@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit {
   user: any;
   profileForm!: FormGroup;
   editableFields: Set<string> = new Set<string>();
-  currentUser: boolean = false;
+  @Output () currentUser: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -65,10 +65,7 @@ export class ProfileComponent implements OnInit {
 
 
 
-  saveChanges() {
-    localStorage.setItem('session', JSON.stringify(this.user));
-    console.log('Changes saved to local storage.');
-  }
+
 
   openEditDialog(fieldName: string): void {
     const dialogRef = this.dialog.open(EditDialogComponent, {

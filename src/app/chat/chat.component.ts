@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UserAuthService } from '../services/UserService.service';
 import { ChatService } from '../services/ChatService.service';
+import { User } from '../interface/User';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-chat',
@@ -8,6 +10,7 @@ import { ChatService } from '../services/ChatService.service';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
+  //users: Observable<User[]> = new Observable<User[]>();
   users: any[] = [];
   searchText: string = '';
   selectedUser: any;
@@ -19,6 +22,12 @@ export class ChatComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // this.userService.getUsers().subscribe(users => {
+    //   this.users = users;
+    //   //console.log(this.users)
+    // //this.users = this.userService.getUsers();
+
+    // });
     this.users = this.userService.users;
   }
 

@@ -44,4 +44,12 @@ export class PostService {
         return this.http.post<{ name: string; }>('https://socialapp-22255-default-rtdb.firebaseio.com/posts.json', newPost);
     }
 
+    deletePost(id: string | undefined): Observable<any> {
+        return this.http.delete('https://socialapp-22255-default-rtdb.firebaseio.com/posts/' + id + '.json');
+    }
+
+    updatePost(id: string | undefined, data: Post) {
+        return this.http.put('https://socialapp-22255-default-rtdb.firebaseio.com/posts/' + id + '.json', data);
+    }
+
 }

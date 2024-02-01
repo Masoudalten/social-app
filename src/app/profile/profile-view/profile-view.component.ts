@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserAuthService } from '../../services/UserService.service';
 
 @Component({
   selector: 'app-profile-view',
@@ -8,13 +9,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ProfileViewComponent {
   @Input() user: any;
-  @Input() currentUser: boolean = false; 
+  @Input() currentUser: boolean = false;
   @Output() edit = new EventEmitter<string>();
   @Output() logout = new EventEmitter<void>();
   editableFields: Set<string> = new Set<string>();
 
-  profileForm!: FormGroup; 
-  constructor(private fb: FormBuilder) {}
+  profileForm!: FormGroup;
+  constructor(private fb: FormBuilder, private userService: UserAuthService) { }
   ngOnInit() {
     this.initForm();
   }
@@ -30,9 +31,10 @@ export class ProfileViewComponent {
   }
 
   saveChanges() {
+    this.userService.updateUserChanges(this.user, this.user.key).subscribe();
     localStorage.setItem('session', JSON.stringify(this.user));
-    console.log('Changes saved to local storage.');
-  } 
+    console.log(this.user);
+  }
 
   toggleField(field: string) {
     if (this.editableFields.has(field)) {
