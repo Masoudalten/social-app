@@ -11,9 +11,9 @@ import { Observable } from 'rxjs';
 })
 export class ChatComponent implements OnInit {
   //users: Observable<User[]> = new Observable<User[]>();
-  users: any[] = [];
+  users: User[] = [];
   searchText: string = '';
-  selectedUser: any;
+  selectedUser: User | undefined;
   showChat = false;
 
   constructor(
@@ -22,14 +22,16 @@ export class ChatComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.userService.getUsers().subscribe(users => {
-    //   this.users = users;
-    //   //console.log(this.users)
-    // //this.users = this.userService.getUsers();
-
-    // });
-    this.users = this.userService.users;
+    this.userService.getUsers().subscribe({
+      next: (users: User[]) => {
+        this.users = users;
+      },
+      error: (error) => {
+        console.error('Error fetching users:', error);
+      }
+    });
   }
+
 
   onSearchTextEntered(searchValue: string) {
     this.searchText = searchValue;
@@ -54,7 +56,7 @@ export class ChatComponent implements OnInit {
     }
   }
 
-  openChat(user: any) {
+  openChat(user: User) {
     this.selectedUser = user;
     this.chatService.selectedUser = this.selectedUser
 

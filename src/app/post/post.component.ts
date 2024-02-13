@@ -15,14 +15,28 @@ export class PostComponent implements OnInit {
 
   selectedPost: Post | undefined;
   currentPostId: string | undefined = '';
+  isLoading: boolean = false;
+  currentUserId: number | undefined;
 
   constructor(private postService: PostService, private userService: UserAuthService) { }
 
   ngOnInit(): void {
+    if (this.isUserLoggedIn) {
+      this.currentUserId = this.userService.session.id;
+    }
+    this.isLoading = true;
     this.postService.getPosts().subscribe(posts => {
       this.posts = posts;
+      console.log(posts)
+      this.isLoading = false;
     });
   }
+
+  get isUserLoggedIn(): boolean {
+    return this.userService.getIsUserLoggedIn();
+  }
+
+
 
   AddNewPost(newPost: Post) {
     if (!this.editMode) {
@@ -31,11 +45,11 @@ export class PostComponent implements OnInit {
           this.posts = posts;
         })
       });
-      //this.editMode = false;
     } else {
       this.postService.updatePost(this.currentPostId, newPost).subscribe(() => {
         this.postService.getPosts().subscribe(posts => {
           this.posts = posts;
+          this.editMode = false;
         })
       });
     }
@@ -49,11 +63,13 @@ export class PostComponent implements OnInit {
     });
   }
 
-  EditPost(id: string | undefined) {
-    this.currentPostId = id
+  EditPost(key: string | undefined) {
+    this.currentPostId = key
     this.editMode = true;
-    this.selectedPost = this.posts.find((post) => { return post.id === id })
-
+    this.selectedPost = this.posts.find((post) => { return post.key === key })
   }
 
+  AuthorizedUser() {
+    // this.userService.user.id = this.posts.id
+  }
 }

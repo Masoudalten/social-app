@@ -1,9 +1,10 @@
-.home-page{
+.home-page {
     display: flex;
     flex-direction: row-reverse;
     height: 90vh;
     overflow: hidden;
 }
 
-
-
+.app-post-container {
+    width: -webkit-fill-available;
+}

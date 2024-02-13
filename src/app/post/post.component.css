@@ -1,6 +1,7 @@
 .main {
     height: calc(100vh - 60px);
     position: relative;
+    width: -webkit-fill-available;
 }
 
 h1 {
@@ -22,8 +23,144 @@ h1 {
     padding: 10px;
 }
 
-.delete-button{
+.delete-button {
     width: 30px;
     height: 30px;
-    
+
+}
+
+
+/* .loading-container {
+    height: 100px;
+    padding: 10px;
+} */
+
+.loading {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: wave;
+    animation-timing-function: linear;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-name: wave;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-duration: 1s;
+    -moz-animation-fill-mode: forwards;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-name: wave;
+    -moz-animation-timing-function: linear;
+    background: #dddddd;
+    background-image: -webkit-gradient(linear, left center, right center, from(#dddddd), color-stop(.2, #f5f5f5), color-stop(.4, #e5e5e5), to(#dddddd));
+    background-image: -webkit-linear-gradient(left, #dddddd 0%, #f5f5f5 20%, #e5e5e5 40%, #dddddd 100%);
+    background-image: -moz-gradient(linear, left center, right center, from(#dddddd), color-stop(.2, #f5f5f5), color-stop(.4, #e5e5e5), to(#dddddd));
+    background-image: -moz-linear-gradient(left, #dddddd 0%, #f5f5f5 20%, #e5e5e5 40%, #dddddd 100%);
+    background-repeat: no-repeat;
+    background-size: 800px 104px;
+    height: 104px;
+    position: relative;
+}
+
+.reverse-direction .loading {
+    -webkit-animation-direction: reverse;
+    -moz-animation-direction: reverse;
+}
+
+.loading div {
+    background: #fff;
+    height: 6px;
+    left: 0;
+    position: absolute;
+    right: 0;
+}
+
+div.shape1 {
+    height: 105px;
+    left: 100px;
+    right: auto;
+    top: 0;
+    width: 10px;
+}
+
+div.shape2 {
+    height: 10px;
+    left: 500px;
+    top: 0;
+}
+
+div.shape3 {
+    left: 110px;
+    top: 10px;
+}
+
+div.shape4 {
+    height: 12px;
+    left: 500px;
+    top: 14px;
+}
+
+div.shape5 {
+    left: 110px;
+    top: 26px;
+}
+
+div.shape6 {
+    height: 10px;
+    left: 500px;
+    top: 32px;
+}
+
+div.shape7 {
+    left: 110px;
+    top: 42px;
+}
+
+div.shape8 {
+    left: 110px;
+    top: 48px;
+    height: 38px;
+}
+
+div.shape9 {
+    left: 110px;
+    top: 86px;
+}
+
+div.shape10 {
+    left: 110px;
+    top: 88px;
+}
+
+div.shape11 {
+    left: 200px;
+    top: 94px;
+    height: 10px;
+    width: 30%;
+}
+
+div.shape12 {
+    left: 500px;
+    top: 94px;
+    height: 10px
+}
+
+@-webkit-keyframes wave {
+    0% {
+        background-position: -468px 0;
+    }
+
+    100% {
+        background-position: 468px 0;
+    }
+}
+
+@-moz-keyframes wave {
+    0% {
+        background-position: -468px 0;
+    }
+
+    100% {
+        background-position: 468px 0;
+    }
 }

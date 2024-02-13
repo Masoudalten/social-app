@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { User } from '../interface/User';
 
 @Injectable({
     providedIn: 'root',
 })
 export class ChatService {
     private showChatSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-    private openChats: string[] = [];
+    private openChats: number[] = [];
     private maxOpenChats = 3;
-    selectedUser: any;
+    selectedUser: User | undefined;
 
     get showChat(): Observable<boolean> {
         return this.showChatSubject.asObservable();
@@ -24,7 +25,7 @@ export class ChatService {
         this.showChatSubject.next(false);
     }
 
-    addChat(chatId: string) {
+    addChat(chatId: number) {
         if (this.openChats.length < this.maxOpenChats) {
             this.openChats.push(chatId);
         } else {
@@ -35,11 +36,12 @@ export class ChatService {
         }
     }
 
-    isChatOpen(chatId: string): boolean {
+    isChatOpen(chatId: number): boolean {
         return this.openChats.includes(chatId);
     }
 
-    getOpenChats(): string[] {
+    getOpenChats(): number[] {
+        console.log("open chant requested")
         return this.openChats;
     }
 }

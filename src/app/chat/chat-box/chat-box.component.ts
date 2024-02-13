@@ -8,35 +8,36 @@ import { ChatService } from '../../services/ChatService.service';
 })
 export class ChatBoxComponent {
 
-  @Input() chatId: string = '';
+  @Input() chatId: number = 0;
   showChat = false;
   selectedUser: any;
-  currentChatId: string = '';
-
+  currentChatId: number = 0;
+  chatPosition: number = 0;
+  
   messages: string[] = [];
   newMessage: string = '';
-  chatPosition: number = 0;
+
 
   constructor(private chatService: ChatService) { }
-  
+
   ngOnInit() {
     this.selectedUser = this.chatService.selectedUser;
 
     this.chatService.showChat.subscribe((status) => {
       this.showChat = status;
-      this.currentChatId = this.chatId || '';
+      this.currentChatId = this.chatId || 0;
       this.chatPosition = this.chatService.getOpenChats().indexOf(this.currentChatId);
     });
   }
 
 
-  getOpenChats(): string[] {
+  getOpenChats(): number[] {
     this.showChat = true;
     return this.chatService.getOpenChats();
   }
 
   onCloseClick() {
-    const index = this.chatService.getOpenChats().indexOf(this.currentChatId);
+    const index = this.chatPosition;
 
     if (index !== -1) {
       this.chatService.getOpenChats().splice(index, 1);

@@ -11,7 +11,7 @@ import { NgForm } from '@angular/forms';
 })
 export class AddPostComponent implements OnChanges {
   @Input() isEditMode: boolean = false;
-  @Input() selectedPost!: Post | undefined; 
+  @Input() selectedPost!: Post | undefined;
   @Output() newPostEvent = new EventEmitter<any>;
   @ViewChild('postForm') postForm!: NgForm;
   newPost: any = { content: '' };
@@ -24,20 +24,24 @@ export class AddPostComponent implements OnChanges {
     }
   }
 
+  get isUserLoggedIn(): boolean {
+    return this.userService.getIsUserLoggedIn();
+  }
+
   patchFormWithSelectedPost() {
     this.postForm.form.patchValue({
-      content: this.selectedPost?.content 
+      content: this.selectedPost?.content
     });
   }
 
   submitNewPost() {
     if (this.newPost.content) {
-      const { name: authorName, lastname: authorLastName } = this.userService.session;
-      const newPost = { nauthor: authorName, lauthor: authorLastName, content: this.newPost.content };
+      const { name: authorName, lastname: authorLastName, id: userId } = this.userService.session;
+      const newPost = { nauthor: authorName, lauthor: authorLastName, id: userId, content: this.newPost.content };
 
       this.newPostEvent.emit(newPost);
 
       this.newPost.content = '';
     }
   }
-}
+ }

@@ -8,4 +8,7 @@ import { UserAuthService } from '../services/UserService.service';
 })
 export class HomeComponent {
 
+  constructor(private userService: UserAuthService) { }
+  ngOnInit() {
+  }
 }

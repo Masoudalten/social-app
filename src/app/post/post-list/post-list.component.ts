@@ -11,7 +11,7 @@ import { Post } from '../../interface/Post';
 })
 export class PostListComponent implements OnInit {
   posts$: Observable<Post[]> = new Observable<Post[]>();
-  newPost: any = { nauthor: '', lauthor: '', content: '' };
+  //newPost: any = { nauthor: '', lauthor: '', content: '' };
 
   constructor(private postService: PostService, private userService: UserAuthService) { }
 

@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { UserAuthService } from '../services/UserService.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from '../interface/User';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
 
   isUserLoggedIn: boolean = false;
+  @Output() user: User | undefined;
 
   form: FormGroup = this.fb.group({
     username: ['', Validators.required]
@@ -22,8 +24,8 @@ export class LoginComponent {
     if (!user) {
       alert('invalid username')
     } else {
-      this.userService.login(user.username);
       this.router.navigate(['/profile', user.id])
+      this.userService.setUser(user)
     }
   }
 }

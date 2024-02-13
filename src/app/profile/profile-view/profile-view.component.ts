@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, AfterViewInit, OnChanges, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserAuthService } from '../../services/UserService.service';
 
@@ -7,7 +7,7 @@ import { UserAuthService } from '../../services/UserService.service';
   templateUrl: './profile-view.component.html',
   styleUrls: ['./profile-view.component.css'],
 })
-export class ProfileViewComponent {
+export class ProfileViewComponent implements OnChanges, OnInit {
   @Input() user: any;
   @Input() currentUser: boolean = false;
   @Output() edit = new EventEmitter<string>();
@@ -16,9 +16,16 @@ export class ProfileViewComponent {
 
   profileForm!: FormGroup;
   constructor(private fb: FormBuilder, private userService: UserAuthService) { }
+
   ngOnInit() {
-    this.initForm();
+    // console.log(this.userService.user?.subscribe(user=>{console.log(user)}))
   }
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['user'] && changes['user'].currentValue) {
+      this.initForm();
+    }
+  }
+
 
   private initForm() {
     this.profileForm = this.fb.group({

@@ -1,9 +1,10 @@
 import { Injectable } from "@angular/core"
 import { Router } from "@angular/router";
-import { Observable, catchError, map, of } from "rxjs";
+import { BehaviorSubject, Observable, Subscription, catchError, map, of } from "rxjs";
 import { ChatService } from "./ChatService.service";
 import { User } from "../interface/User";
 import { HttpClient } from "@angular/common/http";
+import { PostService } from "./PostService.service";
 
 @Injectable({
     providedIn: 'root'
@@ -12,7 +13,7 @@ import { HttpClient } from "@angular/common/http";
 export class UserAuthService {
 
 
-    users: any[] = [];
+    users: User[] = [];
     // users: any[] = [
     //     {
     //         id: 1,
@@ -95,25 +96,29 @@ export class UserAuthService {
     //         image: 'https://www.shutterstock.com/image-photo/profile-picture-smiling-successful-young-260nw-2040223583.jpg'
     //     }
     // ];
-
-
-
     private isUserLoggedIn: boolean = false;
 
     session: any;
-    user: any;
+    private userSubject: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
+    user: Observable<any> | undefined = this.userSubject.asObservable();
 
 
-    constructor(private router: Router, private chatService: ChatService, private http: HttpClient) {
+    constructor(private router: Router, private chatService: ChatService, private http: HttpClient, private postService: PostService) {
         const storedSession = localStorage.getItem('session');
         this.session = storedSession ? JSON.parse(storedSession) : null;
         this.isUserLoggedIn = this.session !== null;
 
     }
+
+    setUser(user: User | null): void {
+        this.userSubject.next(user);
+    }
+
     getUsers(): Observable<User[]> {
+        console.log("getUsers is used")
         return this.http.get<{ [key: string]: User }>("https://socialapp-22255-default-rtdb.firebaseio.com/users.json").pipe(
             map((response) => {
-                //let users = [];
+                this.users = [];
                 for (let key in response) {
                     if (response.hasOwnProperty(key))
                         this.users.push({ ...response[key], key: key })
@@ -121,6 +126,7 @@ export class UserAuthService {
                 return this.users;
             }));
     }
+
 
 
     login(username: string) {
@@ -140,14 +146,16 @@ export class UserAuthService {
         this.router.navigateByUrl('/');
         this.isUserLoggedIn = false;
         this.chatService.closeAllChats();
+
     }
 
-    public getUser(id: number): Observable<any> {
+    getUser(id: number): Observable<any> {
+        console.log("getUser is used")
         if (this.users && this.users.length > 0) {
             let user = this.users.find((u) => u.id === id);
             return of(user);
-
         } else {
+            console.log("Null")
             return of(null)
         }
     }
@@ -179,15 +187,39 @@ export class UserAuthService {
     }
 
 
-    currentUser(): boolean {
-        if (this.isUserLoggedIn && this.user.id === this.session.id) {
-            console.log('User is the current user');
-            return true;
-        }
 
-        console.log('User is not the current user');
-        return false;
-    }
+    // currentUser(): boolean {
 
+    //     if (this.isUserLoggedIn && this.user && this.user.id === this.session.id) {
+    //         console.log('User is the current user');
+    //         return true;
+    //     } else {
+    //         console.log('User is not the current user');
+    //         return false;
+    //     }
+    // }
+
+
+    // currentUser(): boolean {
+    //     if (this.isUserLoggedIn && this.user) {
+    //         let isCurrentUser = false; // Initialize a flag to track if the user is the current user
+
+    //         // Subscribe to the user observable
+    //         this.user.subscribe(user => {
+    //             if (user && user.id === this.session.id) {
+    //                 console.log('User is the current user');
+    //                 isCurrentUser = true;
+    //             } else {
+    //                 console.log('User is not the current user');
+    //                 isCurrentUser = false;
+    //             }
+    //         });
+
+    //         return isCurrentUser; // Return the flag value after the subscription
+    //     } else {
+    //         console.log('User is not logged in');
+    //         return false; // Return false if the user is not logged in or user is not defined
+    //     }
+    // }
 
 }

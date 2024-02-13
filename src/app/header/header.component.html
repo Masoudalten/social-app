@@ -1,23 +1,23 @@
 <div class="header-bg">
     <div class="container header">
         <h2><a [routerLink]="'home'"> Social APP</a></h2>
-        <div>
-            <ng-container *ngIf="isUserLoggedIn; else loginLink">
-                <a [routerLink]="'/profile/' + (user$ | async)?.id">
-                    <span>{{(user$ | async)?.name}}</span>
-                    <img src="{{ (user$ | async)?.image }}" alt="profile-picture">
+        <div *ngIf="isUserLoggedIn">
+            <ng-container *ngIf="user$ ; else loadingTemplate">
+                <a [routerLink]="'/profile/' + user$.id">
+                    <span>{{ user$.name }}</span>
+                    <img [src]="user$.image" alt="profile-picture">
                 </a>
-                <ng-container *ngIf="!(user$ | async)">
-                    <span>Loading...</span>
-                </ng-container>
             </ng-container>
-            <ng-template #loginLink>
-                <a [routerLink]="'login'">
-                    <span>Login</span>
-                    <img src="https://i.pinimg.com/originals/97/21/05/972105c5a775f38cf33d3924aea053f1.jpg"
-                        alt="profile-picture">
-                </a>
-            </ng-template>
         </div>
+        <ng-template #loadingTemplate>
+            <span>Loading...</span>
+        </ng-template>
+        <ng-container *ngIf="!isUserLoggedIn">
+            <a [routerLink]="'login'">
+                <span>Login</span>
+                <img src="https://i.pinimg.com/originals/97/21/05/972105c5a775f38cf33d3924aea053f1.jpg"
+                    alt="profile-picture">
+            </a>
+        </ng-container>
     </div>
 </div>

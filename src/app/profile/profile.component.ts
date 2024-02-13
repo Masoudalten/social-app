@@ -1,9 +1,10 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserAuthService } from '../services/UserService.service';
+import { User } from '../interface/User';
 
 @Component({
   selector: 'app-profile',
@@ -11,10 +12,11 @@ import { UserAuthService } from '../services/UserService.service';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
+  users: any;
   user: any;
   profileForm!: FormGroup;
   editableFields: Set<string> = new Set<string>();
-  @Output () currentUser: boolean = false;
+  @Output() currentUser: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,25 +27,24 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      const userId = +params['id'];
-      this.userService.getUser(userId).subscribe(
-        user => {
-          if (!user) {
-            console.error('User not found');
-          } else {
+    this.userService.getUsers().subscribe(() => {
+      this.route.params.subscribe(params => {
+        const userId = +params['id'];
+        this.userService.getUser(userId).subscribe({
+          next: (user: User) => {
             this.user = user;
             this.initForm();
             this.logCurrentUserStatus();
+          },
+          error: (err: any) => {
+            console.error('Error fetching user:', err);
           }
-        },
-        error => {
-          console.error('Error fetching user:', error);
-        }
-      );
-    });
-
+        });
+      });
+    })
   }
+
+
   private logCurrentUserStatus(): void {
     if (this.userService.session && this.userService.session.id === this.user.id) {
       this.currentUser = true;
@@ -61,10 +62,6 @@ export class ProfileComponent implements OnInit {
       image: [this.user.image]
     });
   }
-
-
-
-
 
 
   openEditDialog(fieldName: string): void {

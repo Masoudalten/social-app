@@ -1,4 +1,4 @@
-<div class="new-post-form fixed-bottom container">
+<div class="new-post-form fixed-bottom container" *ngIf="isUserLoggedIn">
     <form (submit)="submitNewPost()" #postForm="ngForm">
         <textarea id="content" name="content" [(ngModel)]="newPost.content"
             placeholder="Write a new post here"></textarea>

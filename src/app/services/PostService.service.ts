@@ -33,7 +33,7 @@ export class PostService {
                 let posts = [];
                 for (let key in response) {
                     if (response.hasOwnProperty(key))
-                        posts.push({ ...response[key], id: key })
+                        posts.push({ ...response[key], key: key })
                 }
                 return posts;
             }));

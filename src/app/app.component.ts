@@ -14,8 +14,7 @@ export class AppComponent {
   constructor(public chatService: ChatService, private userService: UserAuthService) { }
 
   ngOnInit() {
-    this.userService.getUsers().subscribe()
-    console.log(this.userService.users)
+
   }
 
 }
