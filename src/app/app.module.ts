@@ -27,12 +27,7 @@ import { ChatBoxComponent } from './chat/chat-box/chat-box.component';
 import { HttpClientModule } from '@angular/common/http';
 
 
-const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'profile/:id', component: ProfileComponent }
-]
+
 
 @NgModule({
   declarations: [
@@ -61,7 +56,7 @@ const routes: Routes = [
     FormsModule,
     CommonModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+
   ],
   providers: [UserAuthService,
     PostService,

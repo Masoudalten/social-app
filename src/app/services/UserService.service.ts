@@ -115,7 +115,7 @@ export class UserAuthService {
     }
 
     getUsers(): Observable<User[]> {
-        console.log("getUsers is used")
+        //console.log("getUsers is used")
         return this.http.get<{ [key: string]: User }>("https://socialapp-22255-default-rtdb.firebaseio.com/users.json").pipe(
             map((response) => {
                 this.users = [];
@@ -150,7 +150,7 @@ export class UserAuthService {
     }
 
     getUser(id: number): Observable<any> {
-        console.log("getUser is used")
+        //console.log("getUser is used")
         if (this.users && this.users.length > 0) {
             let user = this.users.find((u) => u.id === id);
             return of(user);

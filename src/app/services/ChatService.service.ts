@@ -41,7 +41,7 @@ export class ChatService {
     }
 
     getOpenChats(): number[] {
-        console.log("open chant requested")
+        //console.log("open chant requested")
         return this.openChats;
     }
 }
